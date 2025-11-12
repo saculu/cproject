@@ -1,3 +1,0 @@
-/workspaces/cproject/build/CMakeFiles/rebuild_cache.dir
-/workspaces/cproject/build/CMakeFiles/edit_cache.dir
-/workspaces/cproject/build/CMakeFiles/Dummy.dir

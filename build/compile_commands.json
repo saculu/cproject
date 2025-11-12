@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/workspaces/cproject/build",
-  "command": "/usr/bin/cc  -I/workspaces/cproject/include  -o CMakeFiles/Dummy.dir/src/dummy.c.o -c /workspaces/cproject/src/dummy.c",
-  "file": "/workspaces/cproject/src/dummy.c"
-}
-]
