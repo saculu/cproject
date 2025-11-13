@@ -16,6 +16,7 @@ RUN apt-get install -y --no-install-recommends \
     ruby \
     gcovr \
     wget \
+    cppcheck \
     && rm -rf /var/lib/apt/lists/*
 
 
