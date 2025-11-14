@@ -59,29 +59,29 @@ jobs:
               -v ${{ github.workspace }}:/builder/mnt \
               cproject-builder:latest \
               /bin/bash -c "rm -rf build; cmake -B build; cmake --build build"
-      -
-        name: Test library
-        run: |
-          docker run \
-            --rm \
-            --platform linux/amd64 \
-            --workdir /builder/mnt/tests/unittest \
-            -v ${{ github.workspace }}:/builder/mnt \
-            cproject-builder:latest \
-            /bin/bash -c "ceedling clobber; ceedling gcov:all; ceedling utils:gcov"
-      -
-        name: Archive coverage results
-        shell: bash
-        run: |
-          staging="reports-${{github.run_number}}"
-          mkdir -p "$staging"
-          cp -r tests/unittest/build/artifacts/gcov "$staging"
-          tar czf "$staging.tar.gz" "$staging"
-          echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
-      -
-        name: Archive artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: reports-${{github.run_number}}
-          path: ${{ env.ASSET }}
-          retention-days: 3
+        -
+          name: Test library
+          run: |
+            docker run \
+              --rm \
+              --platform linux/amd64 \
+              --workdir /builder/mnt/tests/unittest \
+              -v ${{ github.workspace }}:/builder/mnt \
+              cproject-builder:latest \
+              /bin/bash -c "ceedling clobber; ceedling gcov:all; ceedling utils:gcov"
+        -
+          name: Archive coverage results
+          shell: bash
+          run: |
+            staging="reports-${{github.run_number}}"
+            mkdir -p "$staging"
+            cp -r tests/unittest/build/artifacts/gcov "$staging"
+            tar czf "$staging.tar.gz" "$staging"
+            echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
+        -
+          name: Archive artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: reports-${{github.run_number}}
+            path: ${{ env.ASSET }}
+            retention-days: 3
