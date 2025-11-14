@@ -28,13 +28,13 @@
   :test:
     - +:test/**
     - -:support
-    - -:generated
+    # - -:generated
   :source:
     - ../../src/**
     - ../../include
   :support:
     - support
-    - generated
+    # - generated
 
 :defines:
   # in order to add common defines:
